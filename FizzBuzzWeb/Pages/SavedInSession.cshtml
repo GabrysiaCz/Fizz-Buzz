@@ -1,0 +1,27 @@
+﻿@page
+@model SavedInSessionModel
+@{
+ViewData["Title"] = "Sprawdzone roki przestępne";
+}
+<div class="text-center">
+    <h1 class="display-4">Sprawdzone roki przestępne</h1>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Imię</th>
+                <th>Rok</th>
+                <th>Wynik</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var result in Model.Results)
+            {
+                <tr>
+                    <td>@result.Name</td>
+                    <td>@result.Year</td>
+                    <td>@result.IsLeap</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

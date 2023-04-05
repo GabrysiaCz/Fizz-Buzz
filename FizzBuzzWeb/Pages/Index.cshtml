@@ -1,15 +1,25 @@
 ﻿@page
 @model IndexModel
 @{
-    ViewData["Title"] = "Fizz Buzz";
+ViewData["Title"] = "Sprawdź rok przestępny";
 }
-
 <div class="text-center">
-    <h1 class="display-4">Welcome @Model.Name</h1>
+    <h1 class="display-4">Sprawdź rok przestępny</h1>
     <form method="post">
-        <label asp-for="FizzBuzz.Number"></label>
-        <input asp-for="FizzBuzz.Number" /><br />
-        <button type="submit">Zatwierdź</button>
+        <div>
+            <label asp-for="Year"></label>
+            <input asp-for="Year" type="number" min="1899" max="2022" required />
+            <span asp-validation-for="Year" class="text-danger"></span>
+        </div>
+        <div>
+            <label asp-for="Name"></label>
+            <input asp-for="Name" type="text" maxlength="100" required />
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+        <button type="submit">Sprawdź</button>
     </form>
-    <span asp-validation-for="FizzBuzz.Number" class="text-danger"></span>
+    @if (Model.Result != null)
+    {
+        <p>@Model.Result</p>
+    }
 </div>
